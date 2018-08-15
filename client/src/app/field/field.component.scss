@@ -1,0 +1,19 @@
+.field {
+  @extend %list;
+
+  width: 80%;
+  height: 80%;
+  display: flex;
+  flex-wrap: wrap;
+
+  &__iteam {
+    width: 10%;
+    height: 10%;
+  }
+}
+
+%list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
