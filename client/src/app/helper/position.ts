@@ -11,4 +11,8 @@ export class Position {
   public setСoordinate(coordinate:string, value:number) {
     this[coordinate] = value
   }
+
+  static equal(pos1:Position, pos2:Position):boolean {
+    return (pos1.x === pos2.x && pos1.y === pos2.y) ? true : false;
+  }
 }

@@ -1,3 +1,3 @@
 <ul class="field">
-  <li *ngFor="let item of cells; index as i" class="field__iteam"><app-cell [position]="cells[i]"></app-cell></li>
+  <li *ngFor="let item of dataService.cellsGamer; index as i" class="field__iteam"><app-cell [cellInfo]="dataService.cellsGamer[i]"></app-cell></li>
 </ul>

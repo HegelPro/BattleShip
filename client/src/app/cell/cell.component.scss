@@ -15,4 +15,16 @@
     outline: none;
     border: 1px solid red;
   }
+
+  &_hasShip {
+    background: red;
+
+    &:hover,
+    &:active,
+    &:visited,
+    &:focus {
+      outline: none;
+      border: 1px solid blue;
+    }
+  }
 }

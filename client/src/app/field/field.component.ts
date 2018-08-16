@@ -1,24 +1,23 @@
-import { Input, Component, OnInit } from '@angular/core';
+import { Input, Component, OnInit } from '@angular/core'
+import { log } from 'util'
 
-import { Position } from '../helper/position'
-import { log } from 'util';
+// import { Position } from '../helper/position'
+import { FieldService } from '../field.service'
 
 @Component({
   selector: 'app-field',
   templateUrl: './field.component.html',
-  styleUrls: ['./field.component.scss']
+  styleUrls: ['./field.component.scss'],
+  providers: [FieldService]
 })
 export class FieldComponent implements OnInit {
   @Input() changeable: boolean
-  private cells:Array<Position> = []
 
-  constructor() { }
+  constructor(private dataService: FieldService) { }
 
   ngOnInit() {
-    for (let i = 1; i <= 10; i++) {
-      for (let j = 1; j <= 10; j++) {
-        this.cells.push(new Position(j, i))
-      }
-    }
+
+    console.log(this.dataService);
+    
   }
 }

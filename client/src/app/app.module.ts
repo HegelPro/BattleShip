@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule }   from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { FieldComponent } from './field/field.component';
@@ -20,7 +21,8 @@ import { PlayingAreaComponent } from './playing-area/playing-area.component';
     PlayingAreaComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule, 
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
