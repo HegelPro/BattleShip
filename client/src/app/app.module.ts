@@ -2,13 +2,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule }   from '@angular/forms';
 
+import { HttpClientModule }   from '@angular/common/http';
+
 import { AppComponent } from './app.component';
 import { FieldComponent } from './field/field.component';
 import { CellComponent } from './cell/cell.component';
 import { HeaderComponent } from './header/header.component';
 import { MainComponent } from './main/main.component';
 import { FooterComponent } from './footer/footer.component';
-import { PlayingAreaComponent } from './playing-area/playing-area.component';
+
+import { BattleShipService } from './battle-ship.service';
+import { ShipComponent } from './ship/ship.component';
 
 @NgModule({
   declarations: [
@@ -18,13 +22,14 @@ import { PlayingAreaComponent } from './playing-area/playing-area.component';
     HeaderComponent,
     MainComponent,
     FooterComponent,
-    PlayingAreaComponent
+    ShipComponent
   ],
   imports: [
     BrowserModule, 
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [BattleShipService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { BattleShipService } from '../battle-ship.service'
+import { log } from 'util';
 
 @Component({
   selector: 'app-main',
@@ -6,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
-  constructor() { }
 
-  ngOnInit() {
+
+  constructor(private battleShipService: BattleShipService) {
   }
 
+  ngOnInit() {
+    
+  }
+
+  gamerWillTurn() {
+    return this.battleShipService.whoWillTurn === "gamer"
+  }
+
+  computerWillTurn() {
+    return this.battleShipService.whoWillTurn === "computer"
+  }
 }

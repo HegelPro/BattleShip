@@ -1,15 +1,31 @@
+:host {
+  display: flex;
+
+  width: 500px;
+}
+
 .field {
   @extend %list;
 
-  width: 80%;
-  height: 80%;
+  width: 400px;
+  height: 400px;
   display: flex;
   flex-wrap: wrap;
+  
 
   &__iteam {
     width: 10%;
     height: 10%;
   }
+}
+
+.ships-info {
+  width: 100px;
+  padding-left: 20px;
+}
+
+.ships {
+  @extend %list;
 }
 
 %list {

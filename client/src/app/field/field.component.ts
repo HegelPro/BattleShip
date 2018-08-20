@@ -1,7 +1,6 @@
-import { Input, Component, OnInit } from '@angular/core'
+import { Output,  Input, Component, OnInit } from '@angular/core'
 import { log } from 'util'
 
-// import { Position } from '../helper/position'
 import { FieldService } from '../field.service'
 
 @Component({
@@ -11,13 +10,11 @@ import { FieldService } from '../field.service'
   providers: [FieldService]
 })
 export class FieldComponent implements OnInit {
-  @Input() changeable: boolean
+  @Input() player
 
-  constructor(private dataService: FieldService) { }
+  constructor(private fieldService: FieldService) { }
 
   ngOnInit() {
-
-    console.log(this.dataService);
-    
+    this.fieldService.postData()    
   }
 }

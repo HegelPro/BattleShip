@@ -17,7 +17,7 @@
   }
 
   &_hasShip {
-    background: red;
+    background: rgb(0, 238, 255);
 
     &:hover,
     &:active,
@@ -25,6 +25,26 @@
     &:focus {
       outline: none;
       border: 1px solid blue;
+    }
+  }
+
+  &_hasFire {
+    position: relative;
+
+    &::after {
+      display: block;
+      content: "";
+      position: absolute;
+
+      background: darkblue;
+      
+      width: 4px;
+      height: 4px;
+
+      top: 50%;
+      left: 50%;
+
+      transform: translate(-50%, -50%);
     }
   }
 }

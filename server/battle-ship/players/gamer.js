@@ -1,0 +1,3 @@
+class Gamer extends Player {
+  
+}

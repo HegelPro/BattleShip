@@ -1,1 +1,1 @@
-<button class="cell" [ngClass]="{}"></button>
+<button class="cell" [ngClass]="{cell_hasShip:cellInfo.hasShip, cell_hasFire:cellInfo.hasFire}" (click)="doSomething()"></button>
