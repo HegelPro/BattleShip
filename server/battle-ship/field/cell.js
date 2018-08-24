@@ -1,18 +1,12 @@
 const Position = require('./position') 
 
  class Cell extends Position {
-  constructor(x, y, params) {
+  constructor(x, y) {
     super(x, y)
 
     this.hasShip = false
     this.hasFire = false
     this.changeable = true
-
-    if(params !== undefined) {
-      for (let param in params) {
-        this[param] = params[param]
-      } 
-    } 
   }
 
   putShip() {

@@ -13,6 +13,7 @@ import { FooterComponent } from './footer/footer.component';
 
 import { BattleShipService } from './battle-ship.service';
 import { ShipComponent } from './ship/ship.component';
+import { FieldService } from './field.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { ShipComponent } from './ship/ship.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [BattleShipService],
+  providers: [BattleShipService, FieldService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

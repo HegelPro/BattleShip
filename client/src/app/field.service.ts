@@ -5,12 +5,18 @@ import { Cell } from './helper/cell'
 import { Position } from './helper/position'
 import { log } from 'util';
 
+// Пример 1
+import { BattleShipService } from './battle-ship.service'
+//
+
 @Injectable({
   providedIn: 'root'
 })
 export class FieldService {
-  constructor(private http: HttpClient) {
+  cells = []
 
+  constructor(private http: HttpClient, private battleShipService:BattleShipService) {
+    console.log('FieldService::construct')
   }
 
   postData(){
@@ -18,6 +24,9 @@ export class FieldService {
     this.http.post('http://localhost:5000/api/field/', body)
       .subscribe(
         (data) => {
+          // Пример 1
+          
+          //
           this.cells = data.field.cells
           this.ships = this.chaneShipsToCells(data.field)
           this.key = data.key

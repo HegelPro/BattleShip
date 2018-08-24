@@ -9,7 +9,7 @@ class Position {
     this.y = newPosision.y
   }
 
-  equal(posisionOne, posisionTwo) {
+  static equal(posisionOne, posisionTwo) {
     return (posisionOne.x === posisionTwo.x && posisionOne.y === posisionTwo.y) ? true : false;
   }
 }

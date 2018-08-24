@@ -9,27 +9,35 @@ for(let i = 1; i <= 100;i++) {
   var counter = 0
 
   field.cells.forEach( cell => {
-    if(!cell.changeable) counter++
+    // if(!cell.changeable) counter++
+    if(cell.hasShip) counter++
   })
 
   
-  if( field.ships[0].length !== 4 ||
-    field.ships[1].length !== 3 ||
-    field.ships[2].length !== 3 ||
-    field.ships[3].length !== 2 ||
-    field.ships[4].length !== 2 ||
-    field.ships[5].length !== 2 ||
-    field.ships[6].length !== 1 ||
-    field.ships[7].length !== 1 ||
-    field.ships[8].length !== 1 ||
-    field.ships[9].length !== 1) {
-      throw "lol"
-      
-      field.ships
-    }
+  if( field.ships[0].parts.length !== 4 ||
+    field.ships[1].parts.length !== 3 ||
+    field.ships[2].parts.length !== 3 ||
+    field.ships[3].parts.length !== 2 ||
+    field.ships[4].parts.length !== 2 ||
+    field.ships[5].parts.length !== 2 ||
+    field.ships[6].parts.length !== 1 ||
+    field.ships[7].parts.length !== 1 ||
+    field.ships[8].parts.length !== 1 ||
+    field.ships[9].parts.length !== 1) {
+    throw "lol"
+    
+    field.ships
+  }
 
+  if( field.ships.length !== 10 ) {
+    throw "lol"
+    
+    field.ships
+  }
 
+  console.log(counter);
   
+
   /*
   if(counter < 20 || counter > 20) {
     console.log(counter)
@@ -39,7 +47,7 @@ for(let i = 1; i <= 100;i++) {
   }*/
 }
 
-console.log("lol");
+console.log("ok");
 
 
 // module.exports = BattleShip

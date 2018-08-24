@@ -11,7 +11,7 @@ export class BattleShipService {
   whoWillTurn:string = "gamer"
 
   constructor() {
-
+    console.log('BattleShipService::construct')
   }
 
   switchPlayer() {
