@@ -1,16 +1,5 @@
-.main {
-  display: flex;
-  justify-content: space-between;
-
-  &__area {
-    width: 50%;
-  }
-}
-
-.gamer {
-  background: rgb(11, 221, 0);
-}
-
-.computer {
-  background: rgb(238, 14, 14);
+:host {
+  height: 100vh;
+  background: rgb(212, 60, 111);
+  border-radius: 3px;
 }

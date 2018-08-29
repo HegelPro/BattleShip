@@ -7,19 +7,55 @@
   <title>Document</title>
 </head>
 <body>
-  <p id="lol"></p>
+<input id="display">
 
-  <script>
-    fetch('http://localhost:5000/api/field/', {
-      method: "POST",
-      mode: 'cors'
-    })
-    .then( res => {
-      return res.json()
-    })
-    .then( res => {
-      console.log(res.field.cells);
-    })
-  </script>
+<button id="submit">btn</button>
+
+<script>
+  fetch('http://localhost:5000/api/field/', {
+    method: "POST",
+    mode: 'cors'
+  })
+  .then( res => {
+    return res.json()
+  })
+  .then( res => {
+    console.log(res.field);
+  })
+</script>
+
+<script>
+var socket = new WebSocket("ws://localhost:8081");
+
+socket.addEventListener('open', () => {
+  console.log("--Open connection")
+})
+
+socket.onmessage = function(message) {
+  
+  var mes = JSON.parse(message.data)
+
+  display.value = mes.message;
+}
+
+socket.onclose = function(event) {
+  console.log("Close connection");
+}
+
+socket.onerror = function(event) {
+  socket.close()
+
+  alert("Error: " + event.reason)
+}
+
+submit.addEventListener("click", () => {
+  var outgoingMessage = display.value
+  
+  socket.send(JSON.stringify({message: outgoingMessage}))
+})
+
+
+
+</script>
 </body>
 </html>

@@ -1,9 +1,6 @@
 import { Output,  Input, Component, OnInit } from '@angular/core'
 import { log } from 'util'
 
-import { FieldService } from '../field.service'
-
-//
 import { BattleShipService } from '../battle-ship.service'
 
 @Component({
@@ -13,16 +10,11 @@ import { BattleShipService } from '../battle-ship.service'
 })
 export class FieldComponent implements OnInit {
   @Input() player
+  cells = []
 
-  constructor(private fieldService: FieldService, private battleShipService:BattleShipService) { }
+  constructor(private battleShipService: BattleShipService) { }
 
   ngOnInit() {
-    this.fieldService.postData()
-
-    // // Пример 1
-    // console.log(this.battleShipService)    
-    // console.log(this.battleShipService.ships)
-    // console.log(this.battleShipService.cells)    
-    //
+    this.cells = (this.player === 'me') ? this.battleShipService.myField._cells: this.battleShipService.enemyField._cells
   }
 }

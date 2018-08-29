@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 
 import { HttpClientModule }   from '@angular/common/http';
 
@@ -11,9 +11,16 @@ import { HeaderComponent } from './header/header.component';
 import { MainComponent } from './main/main.component';
 import { FooterComponent } from './footer/footer.component';
 
-import { BattleShipService } from './battle-ship.service';
 import { ShipComponent } from './ship/ship.component';
+import { PlayerComponent } from './player/player.component';
+import { DisplayComponent } from './display/display.component';
+import { ShipsComponent } from './ships/ships.component';
+import { BattleShipComponent } from './battle-ship/battle-ship.component';
+import { ControllerComponent } from './controller/controller.component';
+
 import { FieldService } from './field.service';
+import { BattleShipService } from './battle-ship.service';
+import { WebsocketService } from './websocket.service'
 
 @NgModule({
   declarations: [
@@ -23,14 +30,20 @@ import { FieldService } from './field.service';
     HeaderComponent,
     MainComponent,
     FooterComponent,
-    ShipComponent
+    ShipComponent,
+    PlayerComponent,
+    DisplayComponent,
+    ShipsComponent,
+    BattleShipComponent,
+    ControllerComponent
   ],
   imports: [
     BrowserModule, 
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
-  providers: [BattleShipService, FieldService],
+  providers: [BattleShipService, FieldService, WebsocketService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

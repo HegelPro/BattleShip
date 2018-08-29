@@ -1,18 +1,27 @@
 import { Injectable } from '@angular/core';
 import { log } from 'util';
 import { BattleShipService } from './battle-ship.service'
-import { FieldService } from './field.service'
+// import { FieldService } from './field.service'
+import { WebsocketService } from './websocket.service'
+import { Position } from './helper/position'
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class FireService {
-  constructor(private battleShipService:BattleShipService) {
-   
-    
+  constructor(private websocketService:WebsocketService) {
   }
 
-  switchPlayer(ships, cells, cell) {
+  clientFire(cell) {
+    this.websocketService.send('clientFire', {
+      position: new Position(cell.x, cell.y)
+    })
+
+    // this.websocketService.send('get')
+  }
+
+  /*switchPlayer(ships, cells, cell) {
     cell.hasFire = true
     
     if(!cell.hasShip) {
@@ -60,5 +69,5 @@ export class FireService {
         if( this.cellOnField( {x, y} ) ) cells[ (y - 1) * 10 + (x - 1) ].hasFire = true
       }
     }
-  }
+  }*/
 }

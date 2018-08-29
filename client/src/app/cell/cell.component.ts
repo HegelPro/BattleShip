@@ -2,6 +2,7 @@ import { Input, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { log } from 'util';
 
 import {FireService } from '../fire.service'
+import { Position } from '../helper/position'
 
 @Component({
   selector: 'app-cell',
@@ -9,8 +10,6 @@ import {FireService } from '../fire.service'
   styleUrls: ['./cell.component.scss']
 })
 export class CellComponent implements OnInit {
-  @Input() cells
-  @Input() ships
   @Input() cellInfo
   @Input() changeable
 
@@ -22,7 +21,7 @@ export class CellComponent implements OnInit {
     
   }
 
-  doSomething() {
-    if( this.changeable && !this.cellInfo.hasFire) this.fireService.switchPlayer(this.ships, this.cells, this.cellInfo)
+  fire() {
+    if(this.changeable && !this.cellInfo.hasFire) this.fireService.clientFire(new Position(this.cellInfo.x, this.cellInfo.y))
   }
 }

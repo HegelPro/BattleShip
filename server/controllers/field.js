@@ -1,7 +1,4 @@
 const Field = require("../battle-ship/field/field")
-// var field = new Field()
-// console.log(field.cellsComputer);
-
 var fields = {}
 
 module.exports.generatyField = function(req, res) {

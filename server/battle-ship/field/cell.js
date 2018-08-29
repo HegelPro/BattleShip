@@ -24,6 +24,18 @@ const Position = require('./position')
   isChangeable() {
     return this.changeable
   }
+
+  toChar() {
+    if(this.hasShip && this.changeable) {
+      return '?'
+    } else if(this.hasShip && !this.changeable) {
+      return '#'
+    } else if(!this.hasShip && this.changeable) {
+      return ' '
+    } else {
+      return '*'
+    }
+  }
 }
 
 module.exports = Cell

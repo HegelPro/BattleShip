@@ -5,8 +5,9 @@ class Ship {
     this.parts = []
   }
 
-  buildNewPart(position) {
-    this.parts.push(position)
+  buildNewPart(placeForNewPart) {
+    var newPart = new Position(placeForNewPart.x, placeForNewPart.y)
+    this.parts.push(newPart)
   }
 
   buildShip(parts) {

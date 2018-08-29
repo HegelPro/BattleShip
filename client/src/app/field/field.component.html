@@ -1,12 +1,3 @@
-<ul class="field">
-  <li *ngFor="let item of fieldService.cells; index as i" class="field__iteam"><app-cell  [changeable]="player !== 'gamer'" [cellInfo]="fieldService.cells[i]" [ships]="fieldService.ships" [cells]="fieldService.cells"></app-cell></li>
-</ul>
+<div *ngFor="let cell of cells; index as i" class="field__iteam"><app-cell  [changeable]="player !== 'me'" [cellInfo]="cell"></app-cell></div>
 
-<div class="ships-info">
-  <p>{{player}}</p>
-
-  <ul class="ships">
-    <li *ngFor="let item of fieldService.ships; index as i" class="field__iteam"><app-ship [shipInfo]="fieldService.ships[i]"></app-ship></li>
-  </ul>
-</div>
 
