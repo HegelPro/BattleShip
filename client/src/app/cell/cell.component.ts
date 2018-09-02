@@ -22,6 +22,6 @@ export class CellComponent implements OnInit {
   }
 
   fire() {
-    if(this.changeable && !this.cellInfo.hasFire) this.fireService.clientFire(new Position(this.cellInfo.x, this.cellInfo.y))
+    if(this.changeable && !this.cellInfo.hasFire) this.fireService.fire(new Position(this.cellInfo.x, this.cellInfo.y))
   }
 }

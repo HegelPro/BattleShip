@@ -63,7 +63,7 @@ class Field {
     this.ships.push(ship)
 
     ship.parts.forEach( part => {
-      this._cells[ this._getIndexInCells(part) ].putShip()
+      this._cells[ this.getIndexInCells(part) ].putShip()
       this._markSpaceAroundParkOfShip(part)
     })
   }
@@ -78,7 +78,7 @@ class Field {
       for (let y = startY; y <= endY; y++) {
         var checkPosition = new Position(x, y)
         if( this._cellOnField( checkPosition ) ) {
-          this._cells[ this._getIndexInCells(checkPosition) ].changeable = false
+          this._cells[ this.getIndexInCells(checkPosition) ].changeable = false
         }
       }
     }
@@ -89,14 +89,12 @@ class Field {
   }
 
   _canHaveShip(cell) {
-    return this._cells[ this._getIndexInCells(cell) ].isChangeable()
+    return this._cells[ this.getIndexInCells(cell) ].isChangeable()
   }
 
-  _getIndexInCells(cell) {
+  getIndexInCells(cell) {
     return (cell.y - 1) * this.MAX_Y + (cell.x - 1)
   }
-
-  
 
   log() {
     var border = ''

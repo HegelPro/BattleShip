@@ -1,14 +1,9 @@
-const { generateRandomNumber } = require('../helper')
-const Position = require('../field/position')
+const { generateRandomNumber } = require('../../helper')
+const Position = require('../../field/position')
 
-class CompExpertLevel {
+class CompMediumLevel {
   constructor() {
     this.savePosition = null
-    this.primery = this.generatePrimery()
-  }
-
-  generatePrimery() {
-
   }
 
   fire(field) {
@@ -21,7 +16,7 @@ class CompExpertLevel {
       this._maybeExplose(doFire, field)
       this.fireNextTo(field)
       this.savePosition
-    }
+    }  
   }
 
   fireNextTo(field) {
@@ -78,4 +73,4 @@ class CompExpertLevel {
   }
 }
 
-module.exports = CompExpertLevel
+module.experts = CompMediumLevel

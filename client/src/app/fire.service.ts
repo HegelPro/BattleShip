@@ -13,8 +13,8 @@ export class FireService {
   constructor(private websocketService:WebsocketService) {
   }
 
-  clientFire(cell) {
-    this.websocketService.send('clientFire', {
+  fire(cell) {
+    this.websocketService.send('fire', {
       position: new Position(cell.x, cell.y)
     })
 

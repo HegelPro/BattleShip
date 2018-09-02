@@ -28,7 +28,7 @@ export class BattleShipService {
       that.setEnemyField(data.field)
     })
 
-    setTimeout( that.startConfig.bind(this), 1000)
+    setTimeout( that.startConfig.bind(this), 1)
   }
 
   startConfig() {
@@ -53,7 +53,7 @@ export class BattleShipService {
   }
 
   startGame() {
-    this.wsService.send('start', null)
+    this.wsService.send('playVsBot', null)
   }
 
   serverFire() {

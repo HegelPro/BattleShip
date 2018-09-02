@@ -1,7 +1,7 @@
 const WebSocketServer = require('ws').Server;
 const wss = new WebSocketServer({ port:5000});
 
-const BattleShip = require('./battle-ship/battle-ship-games')
+const BattleShip = require('./battle-ship/battle-ship')
 const PlayerFabric = require('./battle-ship/players/player-fabric')
 
 wss.on('connection', (ws) => {

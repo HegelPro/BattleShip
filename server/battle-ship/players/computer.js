@@ -1,7 +1,7 @@
 const Player = require("./player")
-const CompEasyLevel = require('../level/comp-easy-level')
-const CompExpertLevel = require('../level/comp-expert-level')
-const CompMediumLevel = require('../level/comp-medium-level')
+const CompEasyLevel = require('./level/comp-easy-level')
+const CompExpertLevel = require('./level/comp-expert-level')
+const CompMediumLevel = require('./level/comp-medium-level')
 
 class Computer extends Player {
   constructor() {
@@ -13,14 +13,9 @@ class Computer extends Player {
       expert: CompMediumLevel
     }
 
-    this.setLevel('easy')
-  }
+    this.putShips()
 
-  giveTurn(switchPlayer) {
-    this._emitter.on('switchPlayer', () => {
-      switchPlayer()
-      this.fire()
-    })
+    this.setLevel('easy')
   }
 
   setLevel(level) {
@@ -28,7 +23,7 @@ class Computer extends Player {
   }
 
   fire() {
-    this._autoFire.fire(this._enemyField)
+    
   }
 }
 

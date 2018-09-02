@@ -1,8 +1,14 @@
-const { generateRandomNumber } = require('../helper')
-const Position = require('../field/position')
+const { generateRandomNumber } = require('../../helper')
+const Position = require('../../field/position')
 
-class CompEasyLevel {
+class CompExpertLevel {
   constructor() {
+    this.savePosition = null
+    this.primery = this.generatePrimery()
+  }
+
+  generatePrimery() {
+
   }
 
   fire(field) {
@@ -13,7 +19,21 @@ class CompEasyLevel {
     
     if(doFire.hasShip) {
       this._maybeExplose(doFire, field)
-      this.fire(field)
+      this.fireNextTo(field)
+      this.savePosition
+    }
+  }
+
+  fireNextTo(field) {
+    var avaibleCells = this.randomPoint(field)
+    var doFire = avaibleCells[ generateRandomNumber(avaibleCells.length) - 1 ]
+    
+    doFire.hasFire = true
+    
+    if(doFire.hasShip) {
+      this._maybeExplose(doFire, field)
+      this.fireNextTo(field)
+      this.savePosition
     }  
   }
 
@@ -58,4 +78,4 @@ class CompEasyLevel {
   }
 }
 
-module.exports = CompEasyLevel
+module.exports = CompExpertLevel

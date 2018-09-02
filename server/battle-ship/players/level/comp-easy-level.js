@@ -1,35 +1,20 @@
-const { generateRandomNumber } = require('../helper')
-const Position = require('../field/position')
+const { generateRandomNumber } = require('../../helper')
+const Position = require('../../field/position')
 
-class CompMediumLevel {
+class CompEasyLevel {
   constructor() {
-    this.savePosition = null
   }
 
   fire(field) {
     var avaibleCells = this.randomPoint(field)
-    var doFire = avaibleCells[ generateRandomNumber(avaibleCells.length) - 1 ]
+    // var doFire = avaibleCells[ generateRandomNumber(avaibleCells.length) - 1 ]
+    return avaibleCells[ generateRandomNumber(avaibleCells.length) - 1 ]
+    // doFire.hasFire = true
     
-    doFire.hasFire = true
-    
-    if(doFire.hasShip) {
-      this._maybeExplose(doFire, field)
-      this.fireNextTo(field)
-      this.savePosition
-    }  
-  }
-
-  fireNextTo(field) {
-    var avaibleCells = this.randomPoint(field)
-    var doFire = avaibleCells[ generateRandomNumber(avaibleCells.length) - 1 ]
-    
-    doFire.hasFire = true
-    
-    if(doFire.hasShip) {
-      this._maybeExplose(doFire, field)
-      this.fireNextTo(field)
-      this.savePosition
-    }  
+    // if(doFire.hasShip) {
+    //   this._maybeExplose(doFire, field)
+    //   this.fire(field)
+    // }
   }
 
   _maybeExplose(position, field) {
@@ -73,4 +58,4 @@ class CompMediumLevel {
   }
 }
 
-module.experts = CompMediumLevel
+module.exports = CompEasyLevel
