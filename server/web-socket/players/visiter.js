@@ -37,9 +37,6 @@ class Visiter extends Gamer {
           this._gameEmitter.emit('fire', this, data.data.position)
           this._gameEmitter.emit('getEnemyField', this)
           break;
-        case 'hitShip':
-          
-          break;
        }
     })
 

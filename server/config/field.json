@@ -1,0 +1,7 @@
+{
+  "MIN_X": 1,
+  "MAX_X": 10,
+  "MIN_Y": 1,
+  "MAX_Y": 10,
+  "SHIPS_AMOUNT": 10
+}

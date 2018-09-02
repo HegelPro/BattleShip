@@ -1,15 +1,19 @@
+const fieldConfig = require('../../config/field.json')
+
 const Position = require('./cell')
 const Cell = require('./cell')
 const ShipBuilder = require('../ship/ship-builder')
 
 class Field {
   constructor(emitter) {
-    this.MAX_X = 10
-    this.MIN_X = 1
-    this.MAX_Y = 10
-    this.MIN_Y = 1
+    this.MAX_X = fieldConfig.MAX_X
+    this.MIN_X = fieldConfig.MIN_X
+    this.MAX_Y = fieldConfig.MAX_Y
+    this.MIN_Y = fieldConfig.MIN_Y
     this._cells = []
     this.ships = []
+
+    this.SHIPS_AMOUNT = fieldConfig.SHIPS_AMOUNT
 
     this._emitter = emitter
 
@@ -29,11 +33,10 @@ class Field {
     this._createEmptyField()
 
     var lenghtOfCurrentShip = 4
-    const SHIPS_AMOUNT = 10
 
     const shipBuilder = new ShipBuilder()
 
-    for (let currentShip = 1, amountOfShipsCurrentType = 0, shouldBeThisAmountOfShipsCurrentType = 1 ; currentShip <= SHIPS_AMOUNT; currentShip++) {
+    for (let currentShip = 1, amountOfShipsCurrentType = 0, shouldBeThisAmountOfShipsCurrentType = 1 ; currentShip <= this.SHIPS_AMOUNT; currentShip++) {
       shipBuilder.buildShip(lenghtOfCurrentShip, this._getAvaiblePositions())
       this._putShipOnField(shipBuilder.getShip())
 

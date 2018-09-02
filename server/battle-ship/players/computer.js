@@ -1,3 +1,5 @@
+const computerCongig = require('../../config/computer.json')
+
 const Player = require("./player")
 const CompEasyLevel = require('./level/comp-easy-level')
 const CompExpertLevel = require('./level/comp-expert-level')
@@ -15,7 +17,7 @@ class Computer extends Player {
 
     this.putShips()
 
-    this.setLevel('easy')
+    this.setLevel( computerCongig.level )
   }
 
   setLevel(level) {

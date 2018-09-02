@@ -20,7 +20,7 @@ class BattleShip {
 
   _addEvents() {
     this._gameEmitter.on('switchPlayer', this._switchPlayer.bind(this) )
-    this._gameEmitter.on('getEnemyField', this._getEnemyField.bind(this) )
+    this._gameEmitter.on('getEnemyField', this._getEnemyField.bind(this) ) // this._gameEmitter.on('getEnemyField', this._getEnemyField.bind(this) )
     this._gameEmitter.on('fire', this._fire.bind(this) )
     // this._gameEmitter.on('end', this._endGame.bind(this) )
     this._gameEmitter.on('botHasStoppedFire', this._sendField.bind(this) )  //  TODO для игры с ботом
@@ -47,9 +47,9 @@ class BattleShip {
 
   _getEnemyField(player) {
     if(player === this._playerOne)
-      player.send('getEnemyField', { field: this._playerTwo.getField() })
+      player.send('getEnemyField', { field: this._playerTwo.getFieldHidden() })
     else if(player === this._playerTwo)
-      player.send('getEnemyField', { field: this._playerOne.getField() })
+      player.send('getEnemyField', { field: this._playerOne.getFieldHidden() })
     else
       throw "player not exist in the game"
   }

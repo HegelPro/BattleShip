@@ -1,5 +1,6 @@
 const Field = require('../field/field')
 const Position = require('../field/position')
+const Cell = require('../../battle-ship/field/cell')
 
 class Player {
   constructor() {
@@ -53,6 +54,17 @@ class Player {
         }
       }
     }
+  }
+  
+  getFieldHidden() {
+    var field = Object.assign({}, this._field)
+    
+    field._cells = field._cells.map( cell => {
+      if( cell.hasFire ) return cell
+      return new Cell(cell.x, cell.y)
+    })
+
+    return field
   }
 }
 

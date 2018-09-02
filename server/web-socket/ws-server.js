@@ -59,7 +59,7 @@ class WSServet {
   _playVsBotListener( key ) {
     var visiter = this.players.get(key)
 
-    var battleShip = new BattleShip(visiter, this._addBot( visiter._field ), "playerVsBot" )
+    var battleShip = new BattleShip(visiter, this._addBot( visiter._field ) )
   }
 
   _addBattleShip(battleShip) {
