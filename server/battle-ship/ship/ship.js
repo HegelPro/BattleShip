@@ -1,8 +1,12 @@
 const Position = require('../field/position')
 
 class Ship {
-  constructor() {
+  constructor(length) {
     this.parts = []
+
+    this.length = length
+
+    this.explosed = false
   }
 
   buildNewPart(placeForNewPart) {

@@ -23,7 +23,7 @@ class Visiter extends Gamer {
   
           this._ws.send(JSON.stringify({
             event: 'getMyField',
-            data:{field: this.getField()}
+            data:{ field: this.getField() }
           }))
           break;
         case 'connect':
@@ -37,6 +37,13 @@ class Visiter extends Gamer {
           this._gameEmitter.emit('fire', this, data.data.position)
           this._gameEmitter.emit('getEnemyField', this)
           break;
+        case 'switchLevel':
+          this._ws.send(JSON.stringify({
+            event: 'getMyField',
+            data:{ field: this.getField() }
+          }))
+          this._gameEmitter.emit('getEnemyField', this)
+          this._gameEmitter.emit('switchLevel', this)
        }
     })
 

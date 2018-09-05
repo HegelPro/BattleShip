@@ -17,7 +17,7 @@ class Builder {
       var randomDirection = orderDirections.splice(0, 1)[0]
       this.tryToBuildNewPart(randomDirection)
 
-      if(this.isValidStep()) {
+      if( this.isValidStep() ) {
         this.makeCurrentPositionNotAvailable()
         this._ship.buildNewPart(this._currentPosition)
         return

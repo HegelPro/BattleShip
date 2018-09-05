@@ -4,8 +4,6 @@ class Bot extends Computer {
   constructor(enemyField) {
     super()
 
-    // this._key = key
-
     this._gameEmitter
   
     this._canFire

@@ -8,13 +8,13 @@ class ShipBuilder {
     this._builder
   }
 
-  buildShip(shipLenght, availablePositions) {
+  buildShip(shipLength, availablePositions) {
     try {
-      this._ship = new Ship()
+      this._ship = new Ship(shipLength)
       
       this._builder = new Builder(this._ship, availablePositions)
 
-      for (let shipSection = 1; shipSection <= shipLenght; shipSection++) {
+      for (let shipSection = 1; shipSection <= shipLength; shipSection++) {
         this._builder.buildNewPart()
       }
 
@@ -22,7 +22,7 @@ class ShipBuilder {
     } catch (e) {
       console.error(e)
       
-      this.buildShip(shipLenght, availablePositions)
+      this.buildShip(shipLength, availablePositions)
     }
   }
 

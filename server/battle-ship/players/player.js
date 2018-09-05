@@ -33,36 +33,28 @@ class Player {
   }
 
   _exlplodeShip(ship) {
-    ship.parts.forEach( part => this._fireSpaceAroundParkOfShip(part) )
+    ship.explosed = true
+    ship.parts.forEach( part => this._field.setSpaceAroundCell(part, 'hasFire', true) )
+    if( this._isGameEnd() )
+      this._gameEmitter.emit('endGame')
+  }
+
+  _isGameEnd() {
+    return this._field.ships.every( ship => ship.explosed )
   }
 
   _switchPlayer() {
     throw '_switchTurn() Не реализовона в этом классе'
   }
-
-  _fireSpaceAroundParkOfShip(cell) {  // TODO перенести в field
-    var startX = cell.x - 1
-    var startY = cell.y - 1
-    var endX = cell.x + 1
-    var endY = cell.y + 1
-
-    for (let x = startX; x <= endX; x++) {
-      for (let y = startY; y <= endY; y++) {
-        var checkPosition = new Position(x, y)
-        if( this._field._cellOnField( checkPosition ) ) {
-          this._field._cells[ this._field.getIndexInCells(checkPosition) ].hasFire = true
-        }
-      }
-    }
-  }
   
   getFieldHidden() {
     var field = Object.assign({}, this._field)
     
-    field._cells = field._cells.map( cell => {
+    field._cells = field._cells.slice().map( cell => {
       if( cell.hasFire ) return cell
       return new Cell(cell.x, cell.y)
     })
+    field.ships = field.ships.slice().map( ship => { return {explosed: ship.explosed, length: ship.length} } )
 
     return field
   }

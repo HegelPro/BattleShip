@@ -5,22 +5,23 @@ const Cell = require('./cell')
 const ShipBuilder = require('../ship/ship-builder')
 
 class Field {
-  constructor(emitter) {
+  constructor() {
     this.MAX_X = fieldConfig.MAX_X
     this.MIN_X = fieldConfig.MIN_X
     this.MAX_Y = fieldConfig.MAX_Y
     this.MIN_Y = fieldConfig.MIN_Y
+
     this._cells = []
-    this.ships = []
-
-    this.SHIPS_AMOUNT = fieldConfig.SHIPS_AMOUNT
-
-    this._emitter = emitter
-
     this._createEmptyField()
+    
+    this.ships = []
+    this._SHIPS_AMOUNT = fieldConfig.SHIPS_AMOUNT
   }
 
   _createEmptyField() {
+    this._cells = []
+    this.ships = []
+    
     for (let y = 1; y <= this.MAX_Y; y++) {
       for (let x = 1; x <= this.MAX_X; x++) {
         this._cells.push(new Cell(x, y))
@@ -29,16 +30,13 @@ class Field {
   }
 
   putAllShips() {
-    this._cells =[]
     this._createEmptyField()
-
-    var lenghtOfCurrentShip = 4
 
     const shipBuilder = new ShipBuilder()
 
-    for (let currentShip = 1, amountOfShipsCurrentType = 0, shouldBeThisAmountOfShipsCurrentType = 1 ; currentShip <= this.SHIPS_AMOUNT; currentShip++) {
+    for (let lenghtOfCurrentShip = 4, currentShip = 1, amountOfShipsCurrentType = 0, shouldBeThisAmountOfShipsCurrentType = 1 ; currentShip <= this._SHIPS_AMOUNT; currentShip++) {
       shipBuilder.buildShip(lenghtOfCurrentShip, this._getAvaiblePositions())
-      this._putShipOnField(shipBuilder.getShip())
+      this._putShipOnField( shipBuilder.getShip() )
 
       amountOfShipsCurrentType++
       if( amountOfShipsCurrentType === shouldBeThisAmountOfShipsCurrentType ) {
@@ -47,16 +45,14 @@ class Field {
         lenghtOfCurrentShip--
       }
     }
-
   }
 
   _getAvaiblePositions() {
     var avaiblePosition = []
 
     this._cells.forEach( cell => {
-      if(cell.changeable) {
+      if(cell.changeable)
         avaiblePosition.push(new Position(cell.x, cell.y))
-      }
     })
 
     return avaiblePosition
@@ -66,12 +62,12 @@ class Field {
     this.ships.push(ship)
 
     ship.parts.forEach( part => {
-      this._cells[ this.getIndexInCells(part) ].putShip()
-      this._markSpaceAroundParkOfShip(part)
+      this._cells[ this.getIndexInCells(part) ].hasShip = true
+      this.setSpaceAroundCell(part, 'changeable', false)
     })
   }
 
-  _markSpaceAroundParkOfShip(cell) {
+  setSpaceAroundCell(cell, prop, bool) {
     var startX = cell.x - 1
     var startY = cell.y - 1
     var endX = cell.x + 1
@@ -80,8 +76,8 @@ class Field {
     for (let x = startX; x <= endX; x++) {
       for (let y = startY; y <= endY; y++) {
         var checkPosition = new Position(x, y)
-        if( this._cellOnField( checkPosition ) ) {
-          this._cells[ this.getIndexInCells(checkPosition) ].changeable = false
+        if( this._cellOnField(checkPosition) ) {
+          this._cells[ this.getIndexInCells(checkPosition) ][prop] = bool
         }
       }
     }
@@ -92,30 +88,11 @@ class Field {
   }
 
   _canHaveShip(cell) {
-    return this._cells[ this.getIndexInCells(cell) ].isChangeable()
+    return this._cells[ this.getIndexInCells(cell) ].changeable
   }
 
   getIndexInCells(cell) {
     return (cell.y - 1) * this.MAX_Y + (cell.x - 1)
-  }
-
-  log() {
-    var border = ''
-    for (let index = 0; index < this.MAX_X + 2; index++) {
-      border += '_'
-    }
-
-    console.log(border);
-    
-    for (let index = 1, str = '|'; index <= this._cells.length; index++) {
-      str += this._cells[index - 1].toChar()
-
-      if(index % this.MAX_X === 0) {
-        console.log(str + '|');
-        str = '|'
-      }
-    }
-    console.log(border);
   }
 }
 

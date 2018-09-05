@@ -22,8 +22,9 @@ class BattleShip {
     this._gameEmitter.on('switchPlayer', this._switchPlayer.bind(this) )
     this._gameEmitter.on('getEnemyField', this._getEnemyField.bind(this) ) // this._gameEmitter.on('getEnemyField', this._getEnemyField.bind(this) )
     this._gameEmitter.on('fire', this._fire.bind(this) )
-    // this._gameEmitter.on('end', this._endGame.bind(this) )
+    this._gameEmitter.on('endGame', this._endGame.bind(this) )
     this._gameEmitter.on('botHasStoppedFire', this._sendField.bind(this) )  //  TODO для игры с ботом
+    this._gameEmitter.on('switchLevel', this._switchLevel.bind(this) )
   }
 
   _sendField() {  // TODO для игры с ботом
@@ -34,7 +35,7 @@ class BattleShip {
   }
  
   _fire(player, position) {
-    if( !player.canFire ) {
+    if( !player.canFire || position === undefined ) {
       console.log(" you can't fire ")
     }
     else if( player === this._playerOne)
@@ -43,6 +44,14 @@ class BattleShip {
       this._playerOne.getFire(position)
     else 
       throw "can't fire"
+  }
+
+  _switchLevel() {  // TODO для бота
+    this._playerTwo.switchLevel()
+    this._playerOne._ws.send(JSON.stringify({
+      event: 'switchLevel',
+      data:{level: this._playerTwo.level}
+    }))
   }
 
   _getEnemyField(player) {
@@ -64,6 +73,13 @@ class BattleShip {
       this._playerOne.canFire = true
       this._playerTwo.canFire = false
     }
+  }
+
+  _endGame() {  // TODO для игры с ботом
+    if(this.whoWillFire === "playerOne")
+      this._playerOne.send('endGame', { isWin: true })
+    else
+      this._playerOne.send('endGame', { isWin: false })
   }
 }
 
