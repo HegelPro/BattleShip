@@ -7,7 +7,7 @@ export class AlertService {
   needAlert = false
   message = ''
 
-  constructor() { }
+  constructor() {}
 
   show(isWin) {
     this.needAlert = true
