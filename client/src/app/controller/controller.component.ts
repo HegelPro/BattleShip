@@ -7,10 +7,8 @@ import { BattleShipService } from '../battle-ship.service'
   styleUrls: ['./controller.component.scss']
 })
 export class ControllerComponent implements OnInit {
-
   constructor(private  battleShipService: BattleShipService) { }
 
   ngOnInit() {
   }
-
 }

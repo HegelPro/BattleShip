@@ -4,4 +4,31 @@
   margin: 0;
   padding: 0;
   list-style: none;
+
+  &__part {
+    width: 20px;
+    height: 20px;
+    margin-bottom: 10px;
+
+    background: rgb(172, 170, 170);
+
+    &:first-child {
+      border-radius: 5px 0 0 5px;
+    }
+
+    &:last-child {
+      border-radius: 0 5px 5px 0;
+    }
+    
+    &_equel-ship:first-child {
+      border-radius: 5px;
+    }
+  }
+
+  &_explosed {
+    & > .ship__part {
+      background: rgb(136, 14, 14);
+    }    
+  }
 }
+

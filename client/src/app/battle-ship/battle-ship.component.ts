@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 
 import { BattleShipService } from '../battle-ship.service'
 // import { WebsocketService } from '../websocket';
@@ -17,20 +16,8 @@ export interface IMessage {
   styleUrls: ['./battle-ship.component.scss']
 })
 export class BattleShipComponent implements OnInit {
-  constructor(private  battleShipService: BattleShipService) { }
+  constructor() { }
 
   ngOnInit() {
-  }
-
-  public sendText(): void {
-    
-  }
-
-  public fire(): void {
-    
-  }
-
-  public removeText(index: number): void {
-    
   }
 }

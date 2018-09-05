@@ -1,2 +1,6 @@
-<button (click)="battleShipService.startGame()">Start game</button>
-<button (click)="battleShipService.ganirateField()">Ganirate Field</button>
+<div class="d-flex align-items-center controller">
+  <p class="mb-0">Level: {{ battleShipService.bot.level[0] | uppercase }}{{ battleShipService.bot.level.slice(1, battleShipService.bot.level.length) }}</p>
+
+  <button class="btn btn-secondary ml-2" (click)="battleShipService.switchLevel()">Switch Level</button>
+  <button class="btn btn-light ml-2" (click)="battleShipService.restartGame()">Restart Game</button>
+</div>

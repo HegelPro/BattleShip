@@ -1,1 +1,3 @@
-ship
+<div class="ship" [ngClass]="{ ship_explosed:shipInfo.explosed }">
+  <div *ngFor="let part of length" class="ship__part" [ngClass]="{'ship__part_equel-ship': length.length === 1}"></div>
+</div>

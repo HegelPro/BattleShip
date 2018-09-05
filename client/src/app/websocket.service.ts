@@ -9,8 +9,6 @@ export class WebsocketService {
   events = {}
 
   constructor() {
-    console.log('WebsocketService::construct')
-    
   }
 
   on(event, func) {

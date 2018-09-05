@@ -15,6 +15,6 @@ export class FieldComponent implements OnInit {
   constructor(private battleShipService: BattleShipService) { }
 
   ngOnInit() {
-    this.cells = (this.player === 'me') ? this.battleShipService.myField._cells: this.battleShipService.enemyField._cells
+    this.cells = (this.player === 'me') ? this.battleShipService.myField.cells: this.battleShipService.enemyField.cells
   }
 }

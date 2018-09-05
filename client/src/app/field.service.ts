@@ -16,7 +16,6 @@ export class FieldService {
   cells = []
 
   constructor(private battleShipService:BattleShipService) {
-    console.log('FieldService::construct')
   }
 }
 

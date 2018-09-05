@@ -17,10 +17,12 @@ import { DisplayComponent } from './display/display.component';
 import { ShipsComponent } from './ships/ships.component';
 import { BattleShipComponent } from './battle-ship/battle-ship.component';
 import { ControllerComponent } from './controller/controller.component';
+import { AlertComponent } from './alert/alert.component'
 
 import { FieldService } from './field.service';
 import { BattleShipService } from './battle-ship.service';
-import { WebsocketService } from './websocket.service'
+import { WebsocketService } from './websocket.service';
+import { AlertService } from './alert.service'
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { WebsocketService } from './websocket.service'
     DisplayComponent,
     ShipsComponent,
     BattleShipComponent,
-    ControllerComponent
+    ControllerComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule, 
@@ -43,7 +46,12 @@ import { WebsocketService } from './websocket.service'
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [BattleShipService, FieldService, WebsocketService],
+  providers: [
+    BattleShipService,
+    FieldService, 
+    WebsocketService,
+    AlertService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

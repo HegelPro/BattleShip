@@ -1,11 +1,19 @@
+:host {
+  width: 40px;
+  height: 40px;
+}
+
 .cell {
   display: block;
   box-sizing: border-box;
+  
+  width: 100%;
+  height: 100%;
 
-  width: 40px;
-  height: 40px;
-
-  background: yellow;
+  background: #a9e4f7; /* Old browsers */
+  background: -moz-linear-gradient(top, #a9e4f7 0%, #6ecce9 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #a9e4f7 0%,#6ecce9 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #a9e4f7 0%,#6ecce9 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   border: 1px solid;
 
   &:hover,
@@ -17,7 +25,10 @@
   }
 
   &_hasShip {
-    background: rgb(0, 238, 255);
+    background: #ffa053; /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover, #ffa053 0%, #e8b642 100%); /* FF3.6-15 */
+    background: -webkit-radial-gradient(center, ellipse cover, #ffa053 0%,#e8b642 100%); /* Chrome10-25,Safari5.1-6 */
+    background: radial-gradient(ellipse at center, #ffa053 0%,#e8b642 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 
     &:hover,
     &:active,
@@ -31,20 +42,29 @@
   &_hasFire {
     position: relative;
 
-    &::after {
+    &::after,
+    &::before {
       display: block;
       content: "";
       position: absolute;
 
       background: darkblue;
-      
+      border-radius: 50%;
+
       width: 4px;
-      height: 4px;
+      height: 100%;
 
       top: 50%;
       left: 50%;
-
-      transform: translate(-50%, -50%);
     }
+
+    &::after {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    &::before {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+    
   }
 }

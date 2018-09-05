@@ -1,14 +1,17 @@
 :host {
+  position: relative;
+  width: 400px;
+}
+
+.field {
   @extend %list;
 
-  width: 400px;
-  height: 400px;
-  background:rgb(158, 146, 146);
-  
-  border-radius: 9px;
+  position: relative;
 
   display: flex;
   flex-wrap: wrap;
+
+  box-shadow: 5px 10px 5px 0px rgba(0,0,0,0.75);
 }
 
 %list {

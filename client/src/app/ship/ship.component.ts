@@ -9,14 +9,13 @@ import { log } from 'util';
 export class ShipComponent implements OnInit {
   @Input() shipInfo
 
+  private length
+
   constructor() { }
 
   ngOnInit() {
-    
+    this.length = new Array(this.shipInfo.length)
   }
 
-  partToNumber(part) {
-    return (part.hasFire) ? 0 : 1;
-  }
-
+  
 }

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+
+import { BattleShipService } from '../battle-ship.service'
 
 @Component({
   selector: 'app-ships',
@@ -6,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ships.component.scss']
 })
 export class ShipsComponent implements OnInit {
+  @Input() player
+  private ships
 
-  constructor() { }
+  constructor(private battleShipService: BattleShipService) {  }
 
   ngOnInit() {
+    this.ships = (this.player === 'me') ? this.battleShipService.myField.ships: this.battleShipService.enemyField.ships
   }
-
 }
