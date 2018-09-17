@@ -2,6 +2,12 @@
   padding: 15px;
 }
 
-h2 {
+@media (max-width: 576px) {
+  :host {
+    padding: 5px 10px;
+  }  
+}
+
+.title {
   font-size: 16px;
 }

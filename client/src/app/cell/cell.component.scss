@@ -1,6 +1,12 @@
 :host {
-  width: 40px;
+  width: 10%;
   height: 40px;
+}
+
+@media (max-width: 576px) {
+  :host {
+    height: 30px;
+  }  
 }
 
 .cell {

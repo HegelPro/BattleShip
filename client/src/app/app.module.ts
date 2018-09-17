@@ -19,7 +19,6 @@ import { BattleShipComponent } from './battle-ship/battle-ship.component';
 import { ControllerComponent } from './controller/controller.component';
 import { AlertComponent } from './alert/alert.component'
 
-import { FieldService } from './field.service';
 import { BattleShipService } from './battle-ship.service';
 import { WebsocketService } from './websocket.service';
 import { AlertService } from './alert.service'
@@ -48,7 +47,6 @@ import { AlertService } from './alert.service'
   ],
   providers: [
     BattleShipService,
-    FieldService, 
     WebsocketService,
     AlertService
   ],
