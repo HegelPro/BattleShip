@@ -5,7 +5,7 @@ import { log } from 'util';
   providedIn: 'root'
 })
 export class WebsocketService {
-  ws:WebSocket = new WebSocket("ws://localhost:5000")
+  ws:WebSocket = new WebSocket("ws://93.171.10.54:5002")
   events = {}
 
   constructor() {
